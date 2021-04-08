@@ -48,6 +48,10 @@ def drawGameState(screen, gs):
     
     elif gameOver == True:
         print("The Game is over")
+        print("Is the game over?")
+        print("is it now")
+        
+
 
 
 p.init()
