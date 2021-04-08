@@ -20,32 +20,34 @@ gameOver = False
 whoWins = ''
 
 def drawGameState(screen, gs):
-    screen.blit(Board, (0, 0))
-    #screen.blit(DiagonalLine1, (0, 0))
 
-    #Display the X and O
+    if gameOver == False:
 
-    for row in range(3):
-        for col in range(3):
-            if gs.board[row][col] == 'X':
-                screen.blit(X, (row * sqSize + OFFSET, col * sqSize + OFFSET))
-            elif gs.board[row][col] == 'O':
-                screen.blit(O, (row * sqSize + OFFSET, col * sqSize + OFFSET))
+        screen.blit(Board, (0, 0))
 
 
-    whoWins = gs.checkWin(gs.board)
-
-    if whoWins == 'X':
-        screen.fill((238,238,210))
-        screen.blit(resultMessageX, (sqSize - OFFSET , sqSize + OFFSET * 2))
-    elif whoWins == 'O':
-        screen.fill((238,238,210))
-        screen.blit(resultMessageO, (sqSize - OFFSET, sqSize + OFFSET * 2))
-    elif whoWins == 'D':
-        screen.fill((238,238,210))
-        screen.blit(resultMessageDraw, (sqSize - OFFSET, sqSize + OFFSET * 2))
+        for row in range(3):
+            for col in range(3):
+                if gs.board[row][col] == 'X':
+                    screen.blit(X, (row * sqSize + OFFSET, col * sqSize + OFFSET))
+                elif gs.board[row][col] == 'O':
+                    screen.blit(O, (row * sqSize + OFFSET, col * sqSize + OFFSET))
 
 
+        whoWins = gs.checkWin(gs.board)
+
+        if whoWins == 'X':
+            screen.fill((238,238,210))
+            screen.blit(resultMessageX, (sqSize - OFFSET , sqSize + OFFSET * 2))
+        elif whoWins == 'O':
+            screen.fill((238,238,210))
+            screen.blit(resultMessageO, (sqSize - OFFSET, sqSize + OFFSET * 2))
+        elif whoWins == 'D':
+            screen.fill((238,238,210))
+            screen.blit(resultMessageDraw, (sqSize - OFFSET, sqSize + OFFSET * 2))
+    
+    elif gameOver == True:
+        print("The Game is over")
 
 
 p.init()
