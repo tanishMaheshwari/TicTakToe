@@ -1,3 +1,10 @@
+'''
+    Things to do
+    
+
+
+'''
+
 import pygame as p
 import time
 import GameEngine
@@ -51,13 +58,6 @@ def drawGameState(screen, gs):
     elif whoWins == 'D':
         screen.fill((238,238,210))
         screen.blit(resultMessageDraw, (sqSize - OFFSET, sqSize + OFFSET * 2))
-
-            
-    #This is a comment
-    # this is another comment
-    # this is the third comment 
-    # and this is the fourth comment
-    #  
 
 
 
