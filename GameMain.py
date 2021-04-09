@@ -14,43 +14,48 @@ OFFSET = int(0.125 * sqSize)
 running = True
 maxFPS = 15
 
-
+scene = 0
 gameOver = False
 
 whoWins = ''
+whereWin = ''
 
 def drawGameState(screen, gs):
+    screen.blit(Board, (0, 0))
+    #screen.blit(DiagonalLine1, (0, 0))
 
-    if gameOver == False:
+    #Display the X and O
 
-        screen.blit(Board, (0, 0))
-
-
-        for row in range(3):
-            for col in range(3):
-                if gs.board[row][col] == 'X':
-                    screen.blit(X, (row * sqSize + OFFSET, col * sqSize + OFFSET))
-                elif gs.board[row][col] == 'O':
-                    screen.blit(O, (row * sqSize + OFFSET, col * sqSize + OFFSET))
+    for row in range(3):
+        for col in range(3):
+            if gs.board[row][col] == 'X':
+                screen.blit(X, (row * sqSize + OFFSET, col * sqSize + OFFSET))
+            elif gs.board[row][col] == 'O':
+                screen.blit(O, (row * sqSize + OFFSET, col * sqSize + OFFSET))
 
 
-        whoWins = gs.checkWin(gs.board)
+    whoWins = gs.checkWin(gs.board)[0]
+    whereWin = gs.checkWin(gs.board)[1]
 
-        if whoWins == 'X':
-            screen.fill((238,238,210))
-            screen.blit(resultMessageX, (sqSize - OFFSET , sqSize + OFFSET * 2))
-        elif whoWins == 'O':
-            screen.fill((238,238,210))
-            screen.blit(resultMessageO, (sqSize - OFFSET, sqSize + OFFSET * 2))
-        elif whoWins == 'D':
-            screen.fill((238,238,210))
-            screen.blit(resultMessageDraw, (sqSize - OFFSET, sqSize + OFFSET * 2))
-    
-    elif gameOver == True:
-        print("The Game is over")
-        print("Is the game over?")
-        print("is it now")
-        
+
+    if whoWins == 'X':
+        screen.fill((238,238,210))
+        screen.blit(resultMessageX, (sqSize - OFFSET , sqSize + OFFSET * 2))
+    elif whoWins == 'O':
+        screen.fill((238,238,210))
+        screen.blit(resultMessageO, (sqSize - OFFSET, sqSize + OFFSET * 2))
+    elif whoWins == 'D':
+        screen.fill((238,238,210))
+        screen.blit(resultMessageDraw, (sqSize - OFFSET, sqSize + OFFSET * 2))
+
+    if whereWin == '1':
+        screen.blit(VerticalLine, (sqSize * 0 + OFFSET * 5, sqSize * 0 + OFFSET * 5))
+
+    #This is a comment
+    # this is another comment
+    # this is the third comment 
+    # and this is the fourth comment 
+
 
 
 
