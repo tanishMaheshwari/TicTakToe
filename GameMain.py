@@ -50,11 +50,12 @@ def drawGameState(screen, gs):
 
     if whereWin == '1':
         screen.blit(VerticalLine, (sqSize * 0 + OFFSET * 5, sqSize * 0 + OFFSET * 5))
-
+        
     #This is a comment
     # this is another comment
     # this is the third comment 
-    # and this is the fourth comment 
+    # and this is the fourth comment
+    #  
 
 
 
