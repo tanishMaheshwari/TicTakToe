@@ -37,6 +37,9 @@ def drawGameState(screen, gs):
     whoWins = gs.checkWin(gs.board)[0]
     whereWin = gs.checkWin(gs.board)[1]
 
+    if whereWin == '1':
+        screen.blit(VerticalLine, (sqSize * 0 + OFFSET * 5, sqSize * 0 + OFFSET * 5))
+        time.sleep(3)
 
     if whoWins == 'X':
         screen.fill((238,238,210))
@@ -48,9 +51,7 @@ def drawGameState(screen, gs):
         screen.fill((238,238,210))
         screen.blit(resultMessageDraw, (sqSize - OFFSET, sqSize + OFFSET * 2))
 
-    if whereWin == '1':
-        screen.blit(VerticalLine, (sqSize * 0 + OFFSET * 5, sqSize * 0 + OFFSET * 5))
-        
+            
     #This is a comment
     # this is another comment
     # this is the third comment 
