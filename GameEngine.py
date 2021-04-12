@@ -26,14 +26,45 @@ class GameState():
 					x += 1
 					break
 		
-		if (Board[0][0] == 'X' and Board[0][1] == 'X' and Board[0][2] == 'X') or (Board[1][0] == 'X' and Board[1][1] == 'X' and Board[1][2] == 'X') or (Board[2][0] == 'X' and Board[2][1] == 'X' and Board[2][2] == 'X') or (Board[0][0] == 'X' and Board[1][0] == 'X' and Board[2][0] == 'X') or (Board[0][1] == 'X' and Board[1][1] == 'X' and Board[2][1] == 'X') or (Board[0][2] == 'X' and Board[1][2] == 'X' and Board[2][2] == 'X') or (Board[0][0] == 'X' and Board[1][1] == 'X' and Board[2][2] == 'X') or (Board[0][2] == 'X' and Board[1][1] == 'X' and Board[2][0] == 'X'):
-			return 'X'
-		elif (Board[0][0] == 'O' and Board[0][1] == 'O' and Board[0][2] == 'O') or (Board[1][0] == 'O' and Board[1][1] == 'O' and Board[1][2] == 'O') or (Board[2][0] == 'O' and Board[2][1] == 'O' and Board[2][2] == 'O') or (Board[0][0] == 'O' and Board[1][0] == 'O' and Board[2][0] == 'O') or (Board[0][1] == 'O' and Board[1][1] == 'O' and Board[2][1] == 'O') or (Board[0][2] == 'O' and Board[1][2] == 'O' and Board[2][2] == 'O') or (Board[0][0] == 'O' and Board[1][1] == 'O' and Board[2][2] == 'O') or (Board[0][2] == 'O' and Board[1][1] == 'O' and Board[2][0] == 'O'):
-			return 'O'
+		if (Board[0][0] == 'X' and Board[0][1] == 'X' and Board[0][2] == 'X'):
+			return 'X1'
+		elif (Board[1][0] == 'X' and Board[1][1] == 'X' and Board[1][2] == 'X'):
+			return 'X2'
+		elif (Board[2][0] == 'X' and Board[2][1] == 'X' and Board[2][2] == 'X'):
+			return 'X3'
+		elif (Board[0][0] == 'X' and Board[1][0] == 'X' and Board[2][0] == 'X'):
+			return 'X4'
+		elif (Board[0][1] == 'X' and Board[1][1] == 'X' and Board[2][1] == 'X'):
+			return 'X5'
+		elif (Board[0][2] == 'X' and Board[1][2] == 'X' and Board[2][2] == 'X'):
+			return 'X6'
+		elif (Board[0][0] == 'X' and Board[1][1] == 'X' and Board[2][2] == 'X'):
+			return 'X7'
+		elif (Board[0][2] == 'X' and Board[1][1] == 'X' and Board[2][0] == 'X'):
+			return 'X8'
+		
+		#O
+		
+		elif (Board[0][0] == 'O' and Board[0][1] == 'O' and Board[0][2] == 'O'):
+			return 'O1'
+		elif (Board[1][0] == 'O' and Board[1][1] == 'O' and Board[1][2] == 'O'):
+			return 'O2'
+		elif (Board[2][0] == 'O' and Board[2][1] == 'O' and Board[2][2] == 'O'):
+			return 'O3'
+		elif (Board[0][0] == 'O' and Board[1][0] == 'O' and Board[2][0] == 'O'):
+			return 'O4'
+		elif (Board[0][1] == 'O' and Board[1][1] == 'O' and Board[2][1] == 'O'):
+			return 'O5'
+		elif (Board[0][2] == 'O' and Board[1][2] == 'O' and Board[2][2] == 'O'):
+			return 'O6'
+		elif (Board[0][0] == 'O' and Board[1][1] == 'O' and Board[2][2] == 'O'):
+			return 'O7'
+		elif (Board[0][2] == 'O' and Board[1][1] == 'O' and Board[2][0] == 'O'):
+			return 'O8'
 		elif x == 0:
-			return 'D'
+			return 'D-'
 		else:
-			return '-'
+			return '--'
 	def Move(self, row, col):
 		if self.board[row][col] == '-':
 			if self.xToMove == True:
