@@ -32,10 +32,15 @@ gameOver = False
 whoWins = ''
 whereWin = ''
 
+playButtonX = sqSize + OFFSET - sqSize // 2
+playButtonY = sqSize + OFFSET
+maxPlayX = (playButtonX + (sqSize - (OFFSET * 2)))
+
 def drawGameState(screen, gs):
 
     if scene == 1:
 
+        screen.fill((238,238,210))
         screen.blit(Board, (0, 0))
 
         for row in range(3):
@@ -95,7 +100,7 @@ def drawGameState(screen, gs):
     elif scene == 0:
         screen.fill((238, 238, 210))
         screen.blit(menuTitleText, (sqSize // 2 - OFFSET, OFFSET * 2 ))
-        screen.blit(PlayButton, (sqSize + OFFSET - sqSize // 2, sqSize + OFFSET))
+        screen.blit(PlayButton, (playButtonX, playButtonY))
         screen.blit(QuitButton, (sqSize + OFFSET + sqSize // 2, sqSize + OFFSET))
         
 
@@ -142,16 +147,29 @@ while running:
         if event.type == p.QUIT:
             p.quit()
         elif event.type == p.MOUSEBUTTONDOWN:
-            if gameOver == False:
+            if scene == 0:
+                location = p.mouse.get_pos()
+                print("Click", location)
+                print(playButtonX, (playButtonX + (sqSize - (OFFSET * 2))) )
+                #Button check
+                #For Play Button
+                if (playButtonX <= location[0]) and (maxPlayX >= location[0])  and  playButtonY <= location[1] and playButtonY + (sqSize - (OFFSET * 2) ) >= location[1]:
+                    print("Switching to scene 1")
+                    scene = 1
+                #for Quit button
+                elif playButtonX + sqSize <= location[0] and maxPlayX + sqSize >= location[0] and playButtonY <= location[1] and playButtonY + (sqSize - (OFFSET * 2) ) >= location[1]:
+                    print("quitting...")
+                    p.quit()
+                
+            
+            
+            elif scene == 1:
                 location = p.mouse.get_pos()
                 col = location[1] // sqSize
                 row = location[0] // sqSize
 
                 gs.Move(row, col)
-            elif gameOver == True:
-                print("The game is over")
-                location = p.mouse.get_pos()
-                #this is a comment
+        
 
 
 
