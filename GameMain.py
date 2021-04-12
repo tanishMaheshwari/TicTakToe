@@ -94,16 +94,12 @@ def drawGameState(screen, gs):
             else:
                 print (time.time() - gs.t0)
                 if int(time.time() - gs.t0) >= 2:
-
+                    screen.fill((238,238,210))
                     if whoWins == 'X':
-                        
-                        screen.fill((238,238,210))
                         screen.blit(resultMessageX, (sqSize - OFFSET , sqSize + OFFSET * 2))
                     elif whoWins == 'O':
-                        screen.fill((238,238,210))
                         screen.blit(resultMessageO, (sqSize - OFFSET, sqSize + OFFSET * 2))
                     elif whoWins == 'D':
-                        screen.fill((238,238,210))
                         screen.blit(resultMessageDraw, (sqSize - OFFSET, sqSize + OFFSET * 2))
         
 
@@ -146,8 +142,10 @@ DiagonalLine2 = p.transform.scale(p.image.load(r"D:\Programming\Python\IDLE\TicT
 HorizontalLine = p.transform.scale(p.image.load(r"D:\Programming\Python\IDLE\TicTakToe\Images\HorizontalLine.png"), (sqSize * 2, sqSize * 3))
 VerticalLine = p.transform.scale(p.image.load(r"D:\Programming\Python\IDLE\TicTakToe\Images\VerticalLine.png"), (sqSize * 3, sqSize * 2))
 
-PlayButton = p.transform.scale(p.image.load(r"D:\Programming\Python\IDLE\TicTakToe\Images\Play.png"), (sqSize - (OFFSET * 2), sqSize - (OFFSET * 2)))
+PlayButton = p.transform.scale(p.image.load(r"D:\Programming\Python\IDLE\TicTakToe\Images\Play2.png"), (sqSize - (OFFSET * 2), sqSize - (OFFSET * 2)))
 QuitButton = p.transform.scale(p.image.load(r"D:\Programming\Python\IDLE\TicTakToe\Images\Quit.png"), (sqSize - (OFFSET * 2), sqSize - (OFFSET * 2)))
+
+Confetti = p.transform.scale(p.image.load(r"D:\Programming\Python\IDLE\TicTakToe\Images\Confetti.gif"), (sqSize * 3, sqSize * 3))
 
 Board = p.transform.scale(p.image.load(r"D:\Programming\Python\IDLE\TicTakToe\Images\Board.png"), (sqSize * 3, sqSize * 3))
 
