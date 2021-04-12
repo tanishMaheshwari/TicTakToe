@@ -1,7 +1,8 @@
 '''
     Things to do
+    play agaain
     
-
+    
 
 '''
 
@@ -31,7 +32,7 @@ def drawGameState(screen, gs):
     screen.blit(Board, (0, 0))
     #screen.blit(DiagonalLine1, (0, 0))
 
-    #Display the X and O
+    #Display the Board state
 
     for row in range(3):
         for col in range(3):
@@ -44,11 +45,44 @@ def drawGameState(screen, gs):
     whoWins = gs.checkWin(gs.board)[0]
     whereWin = gs.checkWin(gs.board)[1]
 
-    if whereWin == '1':
-        screen.blit(VerticalLine, (sqSize * 0 + OFFSET * 5, sqSize * 0 + OFFSET * 5))
-        print("vertical 1")
-        
+    #Test drawing
+    
+    #screen.blit(VerticalLine, (1, sqSize * 2 + OFFSET * 3))
+    
+    #screen.blit(HorizontalLine, (sqSize * 0 + OFFSET * 3,0))
 
+    '''
+        NOTE
+        HORIZONTAL and  VERTICAL are interchanged
+
+    '''
+    if whoWins != '-':
+        if whereWin == '1':
+            screen.blit(HorizontalLine, (sqSize * 0 + OFFSET * 3,0))
+            print("Horizontal 1")
+            
+        elif whereWin == '2':
+            screen.blit(HorizontalLine, (sqSize * 1 + OFFSET * 3,0))
+            print("Horizontal 2")
+        elif whereWin == '3':
+            screen.blit(HorizontalLine, (sqSize * 2 + OFFSET * 3,0))
+            print("Horizontal 3")
+        elif whereWin == '4':
+            screen.blit(VerticalLine, (1, sqSize * 0 + OFFSET * 3))
+            print("vertical 1")
+        elif whereWin == '5':
+            screen.blit(VerticalLine, (1, sqSize * 1 + OFFSET * 3))
+            print("Vertical 2")
+        elif whereWin == '6':
+            screen.blit(VerticalLine, (1, sqSize * 3 + OFFSET * 3))
+            print("Vertical 3")
+        elif whereWin == '7':
+            screen.blit(DiagonalLine2, (0, 0))
+            print("Diagonal 2")
+        elif whereWin == '8':
+            screen.blit(DiagonalLine1, (0, 0))
+        
+    '''
     if whoWins == 'X':
         screen.fill((238,238,210))
         screen.blit(resultMessageX, (sqSize - OFFSET , sqSize + OFFSET * 2))
@@ -58,7 +92,7 @@ def drawGameState(screen, gs):
     elif whoWins == 'D':
         screen.fill((238,238,210))
         screen.blit(resultMessageDraw, (sqSize - OFFSET, sqSize + OFFSET * 2))
-
+    '''
 
 
 
@@ -83,8 +117,8 @@ X = p.transform.scale(p.image.load(r"D:\Programming\Python\IDLE\TicTakToe\Images
 O = p.transform.scale(p.image.load(r"D:\Programming\Python\IDLE\TicTakToe\Images\O.png"), (sqSize - (OFFSET * 2), sqSize - (OFFSET * 2)))
 DiagonalLine1 = p.transform.scale(p.image.load(r"D:\Programming\Python\IDLE\TicTakToe\Images\DiagonalLine1.png"), (sqSize * 3, sqSize * 3))
 DiagonalLine2 = p.transform.scale(p.image.load(r"D:\Programming\Python\IDLE\TicTakToe\Images\DiagonalLine2.png"), (sqSize * 3, sqSize * 3))
-HorizontalLine = p.transform.scale(p.image.load(r"D:\Programming\Python\IDLE\TicTakToe\Images\HorizontalLine.png"), (sqSize * 3, sqSize * 3))
-VerticalLine = p.transform.scale(p.image.load(r"D:\Programming\Python\IDLE\TicTakToe\Images\VerticalLine.png"), (sqSize * 3, sqSize * 3))
+HorizontalLine = p.transform.scale(p.image.load(r"D:\Programming\Python\IDLE\TicTakToe\Images\HorizontalLine.png"), (sqSize * 2, sqSize * 3))
+VerticalLine = p.transform.scale(p.image.load(r"D:\Programming\Python\IDLE\TicTakToe\Images\VerticalLine.png"), (sqSize * 3, sqSize * 2))
 Board = p.transform.scale(p.image.load(r"D:\Programming\Python\IDLE\TicTakToe\Images\Board.png"), (sqSize * 3, sqSize * 3))
 
 #   LOOP STARTS HERE
