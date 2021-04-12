@@ -27,7 +27,7 @@ running = True
 maxFPS = 15
 
 scene = 0
-gameOver = False
+x = 0
 
 whoWins = ''
 whereWin = ''
@@ -37,7 +37,7 @@ playButtonY = sqSize + OFFSET
 maxPlayX = (playButtonX + (sqSize - (OFFSET * 2)))
 
 def drawGameState(screen, gs):
-
+    
     if scene == 1:
 
         screen.fill((238,238,210))
@@ -64,39 +64,50 @@ def drawGameState(screen, gs):
         if whoWins != '-':
             if whereWin == '1':
                 screen.blit(HorizontalLine, (sqSize * 0 + OFFSET * 3,0))
-                print("Horizontal 1")
+                #print("Horizontal 1")
             elif whereWin == '2':
                 screen.blit(HorizontalLine, (sqSize * 1 + OFFSET * 3,0))
-                print("Horizontal 2")
+                #print("Horizontal 2")
             elif whereWin == '3':
                 screen.blit(HorizontalLine, (sqSize * 2 + OFFSET * 3,0))
-                print("Horizontal 3")
+                #print("Horizontal 3")
             elif whereWin == '4':
                 screen.blit(VerticalLine, (1, sqSize * 0 + OFFSET * 3))
-                print("vertical 1")
+                #print("vertical 1")
             elif whereWin == '5':
                 screen.blit(VerticalLine, (1, sqSize * 1 + OFFSET * 3))
-                print("Vertical 2")
+                #print("Vertical 2")
             elif whereWin == '6':
                 screen.blit(VerticalLine, (1, sqSize * 3 + OFFSET * 3))
-                print("Vertical 3")
+                #print("Vertical 3")
             elif whereWin == '7':
                 screen.blit(DiagonalLine2, (0, 0))
-                print("Diagonal 2")
+                #print("Diagonal 2")
             elif whereWin == '8':
                 screen.blit(DiagonalLine1, (0, 0))
             
-        '''
-        if whoWins == 'X':
-            screen.fill((238,238,210))
-            screen.blit(resultMessageX, (sqSize - OFFSET , sqSize + OFFSET * 2))
-        elif whoWins == 'O':
-            screen.fill((238,238,210))
-            screen.blit(resultMessageO, (sqSize - OFFSET, sqSize + OFFSET * 2))
-        elif whoWins == 'D':
-            screen.fill((238,238,210))
-            screen.blit(resultMessageDraw, (sqSize - OFFSET, sqSize + OFFSET * 2))
-        '''
+        if whoWins != '-':
+            print(gs.x)
+            if gs.x == 0:
+                gs.t0 = time.time()
+                gs.x += 1
+            else:
+                print (time.time() - gs.t0)
+                if int(time.time() - gs.t0) >= 2:
+
+                    if whoWins == 'X':
+                        
+                        screen.fill((238,238,210))
+                        screen.blit(resultMessageX, (sqSize - OFFSET , sqSize + OFFSET * 2))
+                    elif whoWins == 'O':
+                        screen.fill((238,238,210))
+                        screen.blit(resultMessageO, (sqSize - OFFSET, sqSize + OFFSET * 2))
+                    elif whoWins == 'D':
+                        screen.fill((238,238,210))
+                        screen.blit(resultMessageDraw, (sqSize - OFFSET, sqSize + OFFSET * 2))
+        
+
+
     elif scene == 0:
         screen.fill((238, 238, 210))
         screen.blit(menuTitleText, (sqSize // 2 - OFFSET, OFFSET * 2 ))
@@ -152,6 +163,7 @@ while running:
                 print("Click", location)
                 print(playButtonX, (playButtonX + (sqSize - (OFFSET * 2))) )
                 #Button check
+                 
                 #For Play Button
                 if (playButtonX <= location[0]) and (maxPlayX >= location[0])  and  playButtonY <= location[1] and playButtonY + (sqSize - (OFFSET * 2) ) >= location[1]:
                     print("Switching to scene 1")

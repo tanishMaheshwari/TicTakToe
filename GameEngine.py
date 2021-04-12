@@ -15,6 +15,8 @@ class GameState():
 
 		self.xToMove = True
 		self.moveLog = []
+		self.x = 0
+		self.t0 = 0
 	
 	def checkWin(self, Board):
 		x = 0
