@@ -13,6 +13,7 @@ class GameState():
 			['-', '-', '-']
 			]
 
+		self.xNotToMove = False
 		self.xToMove = True
 		self.moveLog = []
 		self.x = 0
